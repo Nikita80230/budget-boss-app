@@ -1,18 +1,16 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import Select from 'react-select'
 // import { getIncomeCategories } from '../../redux/transactions/incomeTransactions/operations'
 
 import { StyledNewTransaction } from './Styled'
 import 'react-datepicker/dist/react-datepicker.css'
+import {
+  addNewExpenseTransaction,
+  addNewIncomeTransaction,
+} from '../../redux/auth/operations'
 
-const options = [
-  // { value: 'chocolate', label: 'Chocolate' },
-  // { value: 'strawberry', label: 'Strawberry' },
-  // { value: 'vanilla', label: 'Vanilla' },
-]
 const colourStyles = {
   control: (styles, { isFocused }) => ({
     ...styles,
@@ -72,14 +70,13 @@ const colourStyles = {
   }),
 }
 
-const NewTransactionForm = () => {
-  // const dispatch = useDispatch()
-  const categoriesList = useSelector(
-    (state) => state.incomeTransactions.incomeCategories
-  )
-  categoriesList.map((category) =>
-    options.push({ value: category, label: category })
-  )
+const NewTransactionForm = ({ location, categoriesList }) => {
+  const dispatch = useDispatch()
+  // console.log(location)
+  const options = categoriesList?.map((category) => ({
+    value: category,
+    label: category,
+  }))
 
   const [startDate, setStartDate] = useState(new Date())
   const [selectedOption, setSelectedOption] = useState(null)
@@ -97,36 +94,69 @@ const NewTransactionForm = () => {
       ...formData,
       [event.target.name]: event.target.value,
     })
-    // console.log(formData)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    // console.log({
-    //   description: formData.transactionDescription,
-    //   amount: +formData.transactionAmount,
-    //   date: startDate.toLocaleDateString(),
-    //   category: selectedOption.value,
-    // })
+    const newTransactionData = {
+      description: formData.transactionDescription,
+      amount: +formData.transactionAmount,
+      date: startDate.toISOString().slice(0, 10),
+      category: selectedOption.value,
+    }
+
+    switch (location.pathname) {
+      case '/income':
+        // console.log('income', location)
+        dispatch(addNewIncomeTransaction(newTransactionData))
+        break
+      case '/expenses':
+        // console.log('expenses', location)
+        dispatch(addNewExpenseTransaction(newTransactionData))
+        break
+      default:
+        break
+    }
+
+    // dispatch(addNewIncomeTransaction(newTransactionData))
+
+    setFormData({
+      transactionDescription: '',
+      transactionAmount: '',
+    })
+    setSelectedOption(null)
+    setStartDate(new Date())
+  }
+
+  const handleClear = () => {
+    setFormData({
+      transactionDescription: '',
+      transactionAmount: '',
+    })
+    setSelectedOption(null)
+    setStartDate(new Date())
   }
 
   return (
     <StyledNewTransaction>
-      <label>
-        <img src='' alt='' />
-        <DatePicker
-          className='newTransactionDate'
-          selected={startDate}
-          onChange={(date) => setStartDate(date)}
-        />
-      </label>
       <form className='newTransactionForm' onSubmit={handleSubmit}>
+        <label>
+          <img src='' alt='' />
+          <DatePicker
+            className='newTransactionDate'
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+            required
+          />
+        </label>
         <input
           className='newTransactionDescriptionInput'
           type='text'
           placeholder='Product description'
           name='transactionDescription'
           onChange={handleInputChange}
+          value={formData.transactionDescription}
+          required
         />
         <Select
           styles={colourStyles}
@@ -134,6 +164,7 @@ const NewTransactionForm = () => {
           value={selectedOption}
           onChange={handleChange}
           options={options}
+          required
         />
         <input
           placeholder='0,00'
@@ -141,11 +172,17 @@ const NewTransactionForm = () => {
           type='text'
           name='transactionAmount'
           onChange={handleInputChange}
+          value={formData.transactionAmount}
+          required
         />
         <button className='newTransactionSubmitBtn' type='submit'>
           Input
         </button>
-        <button className='newTransactionClearBtn' type='button'>
+        <button
+          className='newTransactionClearBtn'
+          type='button'
+          onClick={handleClear}
+        >
           Clear
         </button>
       </form>

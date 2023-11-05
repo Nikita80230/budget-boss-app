@@ -61,6 +61,7 @@ export const StyledCategoriesList = styled.div`
   .categoryItem {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .categoryItemValue {
     margin-bottom: 6px;
@@ -75,6 +76,12 @@ export const StyledCategoriesList = styled.div`
   }
 
   .categoryItemImgThumb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+
     width: 64px;
     height: 64px;
 
@@ -93,7 +100,14 @@ export const StyledCategoriesList = styled.div`
     border: 1px solid #42a652;
     box-shadow: 0px 0px 6px 0px #41a350;
   }
+
   .categoryItemImg {
+    width: 50px;
+    height: 50px;
+
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(53% - 25px);
   }
   .categoryItemText {
     color: ${(props) => props.theme.colors.secondary};

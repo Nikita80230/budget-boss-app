@@ -89,3 +89,101 @@ export const logOut = createAsyncThunk(
     }
   }
 )
+
+export const getIncomeCategories = createAsyncThunk(
+  'auth/getIncomeCategories',
+
+  async (_, thunkAPI) => {
+    try {
+      const response = await instance.get('transaction/income-categories')
+      toast.success('You got Income categories successfully !!!')
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const getExpenseCategories = createAsyncThunk(
+  'auth/getExpensesCategories',
+
+  async (_, thunkAPI) => {
+    try {
+      const response = await instance.get('transaction/expense-categories')
+      toast.success('You got Expenses categories successfully !!!')
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const addNewIncomeTransaction = createAsyncThunk(
+  'transactions/addNewIncomeTransaction',
+  async (newTransactionData, thunkAPI) => {
+    try {
+      const response = await instance.post(
+        'transaction/income',
+        newTransactionData
+      )
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const deleteTransaction = createAsyncThunk(
+  'transactions/deleteTransaction',
+  async (id, thunkAPI) => {
+    try {
+      const response = await instance.delete(`transaction/${id}`)
+      return { ...response.data, id }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const addNewExpenseTransaction = createAsyncThunk(
+  'transactions/addNewExpenseTransaction',
+  async (newTransactionData, thunkAPI) => {
+    try {
+      const response = await instance.post(
+        'transaction/expense',
+        newTransactionData
+      )
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const getPeriodTransactionData = createAsyncThunk(
+  'auth/getPeriodTransactionData',
+
+  async (date, thunkAPI) => {
+    try {
+      const response = await instance.get(
+        `/transaction/period-data?date=${date}`
+      )
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)
+
+export const updateBalance = createAsyncThunk(
+  'auth/updateBalance',
+
+  async (balance, thunkAPI) => {
+    try {
+      const response = await instance.patch('/user/balance', balance)
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message)
+    }
+  }
+)

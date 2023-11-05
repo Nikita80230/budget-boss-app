@@ -3,6 +3,8 @@ import styled from 'styled-components'
 export const StyledDateSwitcher = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 165px;
+  width: 100%;
 
   & > span {
     margin-bottom: 5px;
@@ -14,7 +16,20 @@ export const StyledDateSwitcher = styled.div`
     font-weight: 400;
     letter-spacing: 0.48px;
   }
+  .switcher {
+    display: flex;
+    justify-content: space-between;
 
+    max-width: 165px;
+    width: 100%;
+
+    & > button {
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+  }
   .switcherDate {
     margin: 0 10px;
 

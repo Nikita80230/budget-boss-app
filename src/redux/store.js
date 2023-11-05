@@ -13,7 +13,6 @@ import {
 } from 'redux-persist'
 
 import { authReducer } from './auth/authSlice'
-import { incomeTransactionsReducer } from './transactions/incomeTransactions/incomeTransactionsSlice'
 
 const authPersistConfig = {
   key: 'auth',
@@ -26,7 +25,6 @@ const persistedAuthReducer = persistReducer(authPersistConfig, authReducer)
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    incomeTransactions: incomeTransactionsReducer,
   },
   middleware(getDefaultMiddleware) {
     return getDefaultMiddleware({

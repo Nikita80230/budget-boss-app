@@ -7,6 +7,8 @@ export const StyledSummaryTable = styled.div`
   .summaryTable {
     display: flex;
     flex-direction: column;
+    border-radius: 17px 17px 0 0;
+    border: 2px solid ${(props) => props.theme.colors.grey};
   }
   .summaryTableHead {
     display: flex;

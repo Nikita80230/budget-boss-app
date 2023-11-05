@@ -28,5 +28,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/label-has-associated-control': 'off',
     'react/prop-types': 'off',
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
   },
 }

@@ -52,6 +52,9 @@ export const StyledTransactionTable = styled.div`
     flex-direction: column;
 
     max-height: 373px;
+    height: 100%;
+
+    border: 2px solid ${(props) => props.theme.colors.grey};
 
     overflow-y: scroll;
     &::-webkit-scrollbar {
@@ -73,8 +76,8 @@ export const StyledTransactionTable = styled.div`
     display: flex;
     gap: 32px;
 
-    border-left: 2px solid ${(props) => props.theme.colors.grey};
-    border-right: 2px solid ${(props) => props.theme.colors.grey};
+    // border-left: 2px solid ${(props) => props.theme.colors.grey};
+    // border-right: 2px solid ${(props) => props.theme.colors.grey};
     border-bottom: 2px solid ${(props) => props.theme.colors.grey};
   }
   .tableBodyBox {
