@@ -8,6 +8,15 @@ export const StyledNewTransaction = styled.div`
   .newTransactionForm {
     display: flex;
   }
+
+  .newTransactionInputsContainer {
+    display: flex;
+  }
+
+  .newTransactionButtonsContainer {
+    display: flex;
+  }
+
   .newTransactionDate {
     max-width: 104px;
     height: 44px;
@@ -99,5 +108,30 @@ export const StyledNewTransaction = styled.div`
     border-radius: 16px;
     border: 2px solid var(--grey, #474759);
     box-shadow: 0px 4px 7px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  // ===================@media (max-width:768px)====================
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+
+    .newTransactionForm {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .newTransactionInputsContainer {
+      display: flex;
+
+      margin-bottom: 32px;
+    }
+
+    .newTransactionButtonsContainer {
+      display: flex;
+    }
   }
 `

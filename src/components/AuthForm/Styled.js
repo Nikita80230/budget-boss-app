@@ -4,12 +4,16 @@ export const StyledAuthForm = styled.form`
   display: flex;
   flex-direction: column;
   max-width: 392px;
+  width: 100%;
   min-height: 554px;
   border-radius: 30px;
   background: #383847;
   box-shadow: 0px 2px 14px 0px rgba(132, 132, 132, 0.2) inset;
   padding: 52px;
   color: #f6f7fb;
+
+  z-index: 2;
+
   .googleWrapper {
     display: flex;
     flex-direction: column;

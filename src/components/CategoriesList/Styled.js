@@ -62,6 +62,10 @@ export const StyledCategoriesList = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    padding: 0;
+    background: transparent;
+    border: none;
   }
   .categoryItemValue {
     margin-bottom: 6px;

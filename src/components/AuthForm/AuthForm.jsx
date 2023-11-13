@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { StyledBtnWrapper, StyledAuthForm } from './Styled'
 import googleSymbol from '../../img/googleSymbol.png'
-import { login, register } from '../../redux/auth/operations'
+import { authWithGoogle, login, register } from '../../redux/auth/operations'
 
 const AuthForm = () => {
   const dispatch = useDispatch()
@@ -25,13 +25,21 @@ const AuthForm = () => {
     dispatch(login(formData))
   }
 
+  const handleGoogleAuth = () => {
+    dispatch(authWithGoogle())
+  }
+
   return (
     <StyledAuthForm>
       <div className='googleWrapper'>
         <p className='googleWrapper-topText'>
           You can log in with your Google Account:
         </p>
-        <button className='googleWrapper-btn' type='button'>
+        <button
+          className='googleWrapper-btn'
+          type='button'
+          onClick={handleGoogleAuth}
+        >
           <img className='googleWrapper-img' src={googleSymbol} alt='' />
           Google
         </button>

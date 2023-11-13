@@ -1,24 +1,23 @@
 import React from 'react'
 import homePageImg from '../../img/homePageImg.png'
-import {
-  StyledHomePage,
-  StyledHomePageContainer,
-  StyledHomePageImg,
-} from './Styled'
+import backgroundImgForTablet from '../../img/backgroundImgForTablet.png'
+import { StyledHomePage } from './Styled'
 // import StyledContainer from '../../components/app/Styled'
 import AuthForm from '../../components/AuthForm/AuthForm'
+import { Container } from '../../components/Container/Container'
 
 const HomePage = () => (
-  <StyledHomePage>
-    {/* <StyledContainer> */}
-    <StyledHomePageContainer>
-      <StyledHomePageImg>
-        <img src={homePageImg} alt='' />
-      </StyledHomePageImg>
+  <Container>
+    <StyledHomePage>
+      <img className='homePageImg' src={homePageImg} alt='wallet with money' />
+      <img
+        className='backgroundImgForTablet'
+        src={backgroundImgForTablet}
+        alt='wallet with money'
+      />
       <AuthForm />
-    </StyledHomePageContainer>
-    {/* </StyledContainer> */}
-  </StyledHomePage>
+    </StyledHomePage>
+  </Container>
 )
 
 export default HomePage

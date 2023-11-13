@@ -74,7 +74,6 @@ const Statistics = () => {
     incomes === undefined || expenses === undefined
       ? []
       : [...Object.entries(incomes), ...Object.entries(expenses)]
-  console.log('allTransactions: ', allTransactions)
 
   const {
     total,
@@ -87,7 +86,6 @@ const Statistics = () => {
   const filteredTransactionData = Object.entries({
     ...restTransactionData,
   }).sort((a, b) => b[1] - a[1]) // { meat: 100, soup: 100, rice: 234 }
-  console.log('filteredTransactionData: ', filteredTransactionData) // [['Salary', 1000],['Add income': 3300]]
   const labels = filteredTransactionData.map((item) => item[0])
   const values = filteredTransactionData.map((item) => item[1])
 

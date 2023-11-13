@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export const StyledEIncomePage = styled.div`
-  width: 1098px;
-  height: 579px;
+  max-width: 1098px;
+  width: 100%;
+  height: 100%;
 
   padding: 35px;
 
@@ -17,5 +18,14 @@ export const StyledEIncomePage = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  // ===================@media (max-width: 768px)====================
+
+  @media (max-width: 768px) {
+    .tablesWrapper {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `

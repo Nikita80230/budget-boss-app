@@ -187,3 +187,18 @@ export const updateBalance = createAsyncThunk(
     }
   }
 )
+
+export const authWithGoogle = createAsyncThunk(
+  'auth/authWithGoogle',
+
+  async (_, thunkAPI) => {
+    try {
+      const response = await instance.get('/auth/google')
+      console.log(response)
+      return response.data
+    } catch (e) {
+      toast.error('Upsss, some error occurred, please try again later')
+      return thunkAPI.rejectWithValue(e.message)
+    }
+  }
+)

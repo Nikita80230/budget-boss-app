@@ -140,51 +140,55 @@ const NewTransactionForm = ({ location, categoriesList }) => {
   return (
     <StyledNewTransaction>
       <form className='newTransactionForm' onSubmit={handleSubmit}>
-        <label>
-          <img src='' alt='' />
-          <DatePicker
-            className='newTransactionDate'
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+        <div className='newTransactionInputsContainer'>
+          <label>
+            <img src='' alt='' />
+            <DatePicker
+              className='newTransactionDate'
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              required
+            />
+          </label>
+          <input
+            className='newTransactionDescriptionInput'
+            type='text'
+            placeholder='Product description'
+            name='transactionDescription'
+            onChange={handleInputChange}
+            value={formData.transactionDescription}
             required
           />
-        </label>
-        <input
-          className='newTransactionDescriptionInput'
-          type='text'
-          placeholder='Product description'
-          name='transactionDescription'
-          onChange={handleInputChange}
-          value={formData.transactionDescription}
-          required
-        />
-        <Select
-          styles={colourStyles}
-          className='newTransactionType'
-          value={selectedOption}
-          onChange={handleChange}
-          options={options}
-          required
-        />
-        <input
-          placeholder='0,00'
-          className='newTransactionAmountInput'
-          type='text'
-          name='transactionAmount'
-          onChange={handleInputChange}
-          value={formData.transactionAmount}
-          required
-        />
-        <button className='newTransactionSubmitBtn' type='submit'>
-          Input
-        </button>
-        <button
-          className='newTransactionClearBtn'
-          type='button'
-          onClick={handleClear}
-        >
-          Clear
-        </button>
+          <Select
+            styles={colourStyles}
+            className='newTransactionType'
+            value={selectedOption}
+            onChange={handleChange}
+            options={options}
+            required
+          />
+          <input
+            placeholder='0,00'
+            className='newTransactionAmountInput'
+            type='text'
+            name='transactionAmount'
+            onChange={handleInputChange}
+            value={formData.transactionAmount}
+            required
+          />
+        </div>
+        <div className='newTransactionButtonsContainer'>
+          <button className='newTransactionSubmitBtn' type='submit'>
+            Input
+          </button>
+          <button
+            className='newTransactionClearBtn'
+            type='button'
+            onClick={handleClear}
+          >
+            Clear
+          </button>
+        </div>
       </form>
     </StyledNewTransaction>
   )
