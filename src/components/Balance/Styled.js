@@ -6,6 +6,10 @@ export const StyledBalance = styled.div`
   padding-bottom: 48px;
   .balanceForm {
     display: flex;
+    // ===================================
+    @media (max-width: 564px) {
+      position: relative;
+    }
   }
   label {
     display: flex;
@@ -20,6 +24,14 @@ export const StyledBalance = styled.div`
     font-weight: 500;
     letter-spacing: 0.24px;
     margin-right: 20px;
+    // =====================================
+    @media (max-width: 564px) {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-right: 0;
+    }
   }
 
   .balanceInputContainer {
@@ -27,6 +39,13 @@ export const StyledBalance = styled.div`
     border-radius: 16px;
     border: 2px solid var(--grey2, #80848f);
     margin-right: 16px;
+    // ============================================
+    @media (max-width: 564px) {
+      margin-right: 0;
+      border-radius: 22px 0px 0px 22px;
+      border-right: none;
+      padding: 15px 16px;
+    }
   }
 
   .balanceInput {
@@ -45,6 +64,11 @@ export const StyledBalance = styled.div`
     font-weight: 700;
     letter-spacing: 0.24px;
     text-transform: uppercase;
+    line-height: 1;
+    // =========================================
+    @media (max-width: 564px) {
+      height: auto;
+    }
   }
   .balanceConfirmBtn {
     width: 125px;
@@ -60,5 +84,14 @@ export const StyledBalance = styled.div`
     font-weight: 400;
     letter-spacing: 0.24px;
     text-transform: uppercase;
+    // ====================================
+    @media (max-width: 564px) {
+      border-radius: 0 22px 22px 0px;
+      height: 50px;
+      text-align: left;
+      padding: 15px 16px;
+      display: flex;
+      align-items: center;
+    }
   }
 `

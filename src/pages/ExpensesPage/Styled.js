@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export const StyledExpensesPage = styled.div`
-  width: 1098px;
-  height: 579px;
+  max-width: 1098px;
+  width: 100%;
+  min-height: 579px;
 
   padding: 35px;
 
@@ -17,5 +18,11 @@ export const StyledExpensesPage = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  // ===================@media (max-width: 564px)====================
+
+  @media (max-width: 564px) {
+    background: unset;
   }
 `

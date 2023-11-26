@@ -182,6 +182,7 @@ export const selectPeriodTransactionsData = (state) =>
 export const selectSelectedCategoryForDetails = (state) =>
   state.auth.selectedCategoryForDetails
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn
+export const selectEmail = (state) => state.auth.userData.email
 
 export const { setSelectedCategoryForDetails } = authSlice.actions
 export const authReducer = authSlice.reducer

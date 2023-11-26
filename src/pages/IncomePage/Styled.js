@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledEIncomePage = styled.div`
+export const StyledIncomePage = styled.div`
   max-width: 1098px;
   width: 100%;
   height: 100%;
@@ -27,5 +27,11 @@ export const StyledEIncomePage = styled.div`
       display: flex;
       flex-direction: column;
     }
+  }
+
+  // ===================@media (max-width: 564px)====================
+
+  @media (max-width: 564px) {
+    background: unset;
   }
 `

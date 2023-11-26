@@ -9,5 +9,8 @@ export const routes = {
   INCOME: '/income',
   EXPENSES: '/expenses',
   STATISTICS: '/statistics',
+  EXPENSES_MOBILE: '/expenses-mobile',
+  INCOME_MOBILE: '/income-mobile',
+  MOBILE_ADD_TRANSACTION_FORM: '/mobile-add-transaction-form',
   NOTFOUND: '*',
 }

@@ -14,6 +14,9 @@ import { StyledApp } from './Styled'
 import RestrictedRoute from '../RestrictedRoute/RestrictedRoute'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import { refreshUser } from '../../redux/auth/operations'
+import ExpensesMobilePage from '../../pages/ExpensesMobilePage/ExpensesMobilePage'
+import IncomeMobilePage from '../../pages/IncomeMobilePage/IncomeMobilePage'
+import MobileAddTransactionForm from '../../pages/MobileAddTransactionForm/MobileAddTransactionForm'
 // import StyledContainer from './Styled'
 
 // const Title = styled.h1`
@@ -61,6 +64,30 @@ export const appRoutes = [
     element: (
       <ProtectedRoute>
         <StatisticPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: routes.EXPENSES_MOBILE,
+    element: (
+      <ProtectedRoute>
+        <ExpensesMobilePage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: routes.INCOME_MOBILE,
+    element: (
+      <ProtectedRoute>
+        <IncomeMobilePage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: routes.MOBILE_ADD_TRANSACTION_FORM,
+    element: (
+      <ProtectedRoute>
+        <MobileAddTransactionForm />
       </ProtectedRoute>
     ),
   },

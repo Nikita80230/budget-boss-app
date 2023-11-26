@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from 'react-router-dom'
+import { useMediaQuery } from 'react-responsive'
 import TransactionTable from '../../components/TransactionTable/TransactionTable'
 import NewTransactionForm from '../../components/NewTransactionForm/NewTransactionForm'
 import SummaryTable from '../../components/SummaryTable/SummaryTable'
@@ -10,11 +11,13 @@ import {
   selectTransactions,
 } from '../../redux/auth/authSlice'
 
-import { StyledEIncomePage } from './Styled'
+import { StyledIncomePage } from './Styled'
+import MobileTransactionTable from '../../components/MobileTransactionTable/MobileTransactionTable'
 
 const IncomePage = () => {
   const transactions = useSelector(selectTransactions)
   const incomeCategoriesList = useSelector(selectIncomeCategories)
+  const isMobile = useMediaQuery({ query: '(max-width: 564px)' })
 
   const dispatch = useDispatch()
   const location = useLocation()
@@ -30,16 +33,25 @@ const IncomePage = () => {
   }, [dispatch])
 
   return (
-    <StyledEIncomePage>
-      <NewTransactionForm
-        location={location}
-        categoriesList={incomeCategoriesList}
-      />
-      <div className='tablesWrapper'>
-        <TransactionTable transactions={incomeTransactions} />
-        <SummaryTable />
-      </div>
-    </StyledEIncomePage>
+    <StyledIncomePage>
+      {isMobile ? (
+        <MobileTransactionTable transactions={incomeTransactions} />
+      ) : (
+        <>
+          <NewTransactionForm
+            location={location}
+            categoriesList={incomeCategoriesList}
+          />
+          <div className='tablesWrapper'>
+            <TransactionTable
+              transactions={incomeTransactions}
+              location={location}
+            />
+            <SummaryTable />
+          </div>
+        </>
+      )}
+    </StyledIncomePage>
   )
 }
 

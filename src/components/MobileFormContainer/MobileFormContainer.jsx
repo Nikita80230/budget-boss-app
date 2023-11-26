@@ -1,16 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import DatePicker from 'react-datepicker'
-import Select from 'react-select'
-// import { getIncomeCategories } from '../../redux/transactions/incomeTransactions/operations'
+import { useLocation } from 'react-router-dom'
 
-import { StyledNewTransaction } from './Styled'
+import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
+import Select from 'react-select'
+
+import { ReactComponent as Calculator } from '../../img/calculator.svg'
+
+import { routes } from '../../routes/routes'
 import {
   addNewExpenseTransaction,
   addNewIncomeTransaction,
 } from '../../redux/auth/operations'
-import { routes } from '../../routes/routes'
+
+import { StyledMobileFormContainer } from './Styled'
 
 const colourStyles = {
   control: (styles, { isFocused }) => ({
@@ -18,7 +22,7 @@ const colourStyles = {
     backgroundColor: 'transparent',
     border: '2px solid #474759',
     boxShadow: isFocused ? 'none' : 'none',
-    borderRadius: 0,
+    borderRadius: '0 0 16px 0',
     // borderBottom: isFocused ? '1px solid #ff3067' : '1px solid #424b5a',
     ':hover': {
       border: '2px solid #474759',
@@ -71,8 +75,9 @@ const colourStyles = {
   }),
 }
 
-const NewTransactionForm = ({ location, categoriesList }) => {
+const MobileFormContainer = ({ categoriesList }) => {
   const dispatch = useDispatch()
+  const location = useLocation()
 
   // console.log(location)
   const options = categoriesList?.map((category) => ({
@@ -107,7 +112,7 @@ const NewTransactionForm = ({ location, categoriesList }) => {
       category: selectedOption.value,
     }
 
-    switch (location.pathname) {
+    switch (location.state?.from) {
       case routes.INCOME:
         // console.log('income', location)
         dispatch(addNewIncomeTransaction(newTransactionData))
@@ -144,11 +149,11 @@ const NewTransactionForm = ({ location, categoriesList }) => {
   }
 
   return (
-    <StyledNewTransaction>
+    <StyledMobileFormContainer>
       <form className='newTransactionForm' onSubmit={handleSubmit}>
         <div className='newTransactionInputsContainer'>
           <label>
-            <img src='' alt='' />
+            {/* <img src='' alt='' /> */}
             <DatePicker
               className='newTransactionDate'
               selected={startDate}
@@ -156,32 +161,39 @@ const NewTransactionForm = ({ location, categoriesList }) => {
               required
             />
           </label>
-          <input
-            className='newTransactionDescriptionInput'
-            type='text'
-            placeholder='Product description'
-            name='transactionDescription'
-            onChange={handleInputChange}
-            value={formData.transactionDescription}
-            required
-          />
-          <Select
-            styles={colourStyles}
-            className='newTransactionType'
-            value={selectedOption}
-            onChange={handleChange}
-            options={options}
-            required
-          />
-          <input
-            placeholder='0,00'
-            className='newTransactionAmountInput'
-            type='text'
-            name='transactionAmount'
-            onChange={handleInputChange}
-            value={formData.transactionAmount}
-            required
-          />
+          <div className='descriptionCategoryWrapper'>
+            <input
+              className='newTransactionDescriptionInput'
+              type='text'
+              placeholder='Product description'
+              name='transactionDescription'
+              onChange={handleInputChange}
+              value={formData.transactionDescription}
+              required
+            />
+            <Select
+              styles={colourStyles}
+              className='newTransactionType'
+              value={selectedOption}
+              onChange={handleChange}
+              options={options}
+              required
+            />
+          </div>
+          <div className='newTransactionAmountContainer'>
+            <input
+              placeholder='0,00'
+              className='newTransactionAmountInput'
+              type='text'
+              name='transactionAmount'
+              onChange={handleInputChange}
+              value={formData.transactionAmount}
+              required
+            />
+            <div className='newTransactionAmountIconWrapper'>
+              <Calculator className='newTransactionAmountIcon' />
+            </div>
+          </div>
         </div>
         <div className='newTransactionButtonsContainer'>
           <button className='newTransactionSubmitBtn' type='submit'>
@@ -196,8 +208,8 @@ const NewTransactionForm = ({ location, categoriesList }) => {
           </button>
         </div>
       </form>
-    </StyledNewTransaction>
+    </StyledMobileFormContainer>
   )
 }
 
-export default NewTransactionForm
+export default MobileFormContainer
