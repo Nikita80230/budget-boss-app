@@ -41,4 +41,10 @@ export const StyledDateSwitcher = styled.div`
     letter-spacing: 0.28px;
     text-transform: uppercase;
   }
+
+  // ===========================@media (max-width: 564px)==============================
+
+  @media (max-width: 564px) {
+    margin: 0 auto;
+  }
 `

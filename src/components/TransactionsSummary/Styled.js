@@ -66,4 +66,32 @@ export const StyledTransactionsSummary = styled.div`
     font-weight: 700;
     letter-spacing: 0.56px;
   }
+
+  // ===========================@media (max-width: 564px)==============================
+
+  @media (max-width: 564px) {
+    .text {
+      margin: 0 auto;
+      margin-bottom: 5px;
+    }
+
+    .expenses {
+      display: flex;
+      flex-direction: column;
+
+      position: relative;
+
+      padding-right: 20px;
+      margin-right: 20px;
+    }
+
+    .expenses:after {
+      top: -5px;
+    }
+
+    .income {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 `

@@ -122,4 +122,10 @@ export const StyledCategoriesList = styled.div`
     letter-spacing: 0.24px;
     text-transform: uppercase;
   }
+
+  // ===========================@media (max-width: 564px)==============================
+
+  @media (max-width: 564px) {
+    padding: 20px 20px;
+  }
 `

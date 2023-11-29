@@ -4,6 +4,12 @@ export const StyledBalance = styled.div`
   display: flex;
   padding-top: 40px;
   padding-bottom: 48px;
+
+  // ===================================
+  @media (max-width: 564px) {
+    margin: 0 auto;
+  }
+
   .balanceForm {
     display: flex;
     // ===================================

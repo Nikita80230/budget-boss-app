@@ -24,7 +24,7 @@ const StatisticPage = () => {
             <img src={mainMenuArrow} alt='' />
             <span>Main Page</span>
           </Link>
-          <Balance />
+          <Balance className='balance' />
           <DateSwitcher />
         </div>
         <TransactionsSummary transactions={transactions} />
