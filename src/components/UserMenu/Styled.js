@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const StyledUserAuth = styled.div`
+  display: inline-flex;
+  align-items: center;
+
   .userMenuBtn {
     width: 40px;
     height: 40px;
@@ -28,6 +31,9 @@ export const StyledUserAuth = styled.div`
     border-right: 2px solid;
   }
   .userLogOutBtn {
+    display: inline-flex;
+    align-items: center;
+
     padding: 0;
     border: none;
     width: 32px;
