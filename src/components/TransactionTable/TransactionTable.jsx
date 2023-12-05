@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import removeIcon from '../../img/removeIcon.png'
 import { StyledTransactionTable } from './Styled'
 import { deleteTransaction } from '../../redux/auth/operations'
+import Modal from '../Modal/Modal'
 
 const TransactionTable = ({ transactions }) => {
   const dispatch = useDispatch()
 
-  const handleDelete = (id) => {
-    dispatch(deleteTransaction(id))
+  const [isModalOpened, setIsModalOpened] = useState(false)
+  const [transactionId, setTransactionId] = useState(null)
+
+  const handleDelete = () => {
+    dispatch(deleteTransaction(transactionId))
+    setTransactionId(null)
+    setIsModalOpened(false)
+  }
+
+  const handleModalOpen = (id) => {
+    setIsModalOpened(true)
+    setTransactionId(id)
+  }
+
+  const handleCancel = () => {
+    setIsModalOpened(false)
   }
 
   return (
@@ -36,7 +51,8 @@ const TransactionTable = ({ transactions }) => {
                 <div className='tableBodyBox removeItemBtn'>
                   <button
                     type='button'
-                    onClick={() => handleDelete(transaction._id)}
+                    onClick={() => handleModalOpen(transaction._id)}
+                    // onClick={() => handleDelete(transaction._id)}
                   >
                     <img src={removeIcon} alt='removeIcon' />
                   </button>
@@ -45,6 +61,13 @@ const TransactionTable = ({ transactions }) => {
             ))}
         </div>
       </div>
+      {isModalOpened && (
+        <Modal
+          onOk={handleDelete}
+          onCancel={handleCancel}
+          text='Are you sure?'
+        />
+      )}
     </StyledTransactionTable>
   )
 }
