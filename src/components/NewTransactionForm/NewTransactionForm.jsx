@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import Select from 'react-select'
+import { useLocation } from 'react-router-dom'
 // import { getIncomeCategories } from '../../redux/transactions/incomeTransactions/operations'
 
 import { StyledNewTransaction } from './Styled'
@@ -71,7 +72,9 @@ const colourStyles = {
   }),
 }
 
-const NewTransactionForm = ({ location, categoriesList }) => {
+const NewTransactionForm = ({ categoriesList }) => {
+  const location = useLocation()
+
   const dispatch = useDispatch()
 
   // console.log(location)

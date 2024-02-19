@@ -2,7 +2,6 @@ import React from 'react'
 import homePageImg from '../../img/homePageImg.png'
 import backgroundImgForTablet from '../../img/backgroundImgForTablet.png'
 import { StyledHomePage } from './Styled'
-// import StyledContainer from '../../components/app/Styled'
 import AuthForm from '../../components/AuthForm/AuthForm'
 import { Container } from '../../components/Container/Container'
 
